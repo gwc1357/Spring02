@@ -2,7 +2,7 @@ name: Spring Boot Maven CI with Wrapper
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   build:
