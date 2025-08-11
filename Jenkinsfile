@@ -14,20 +14,21 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
-        
+ /*       
         stage('2. Check Docker') {
             steps {
                 sh 'docker version'
             }
         }
-        
+*/
+/*      
         stage('3. Docker Build') {
             steps {
                 sh 'docker build -t ex02-app:latest .'
             }
         }
-
-        stage('4. Docker Push') {
+*/
+/*       stage('4. Docker Push') {
             steps {
                 withCredentials([usernamePassword(
                     credentialsId: 'dockerhub-cred',
@@ -40,6 +41,15 @@ pipeline {
                     docker push $DOCKERHUB_USERNAME/ex02-app:latest
                     '''
                 }
+            }
+        }
+*/
+        stage('5. Deploy to K3s') {
+            steps {
+                sh '''
+                export KUBECONFIG=/home/vagrant/.kube/config
+                kubectl apply -f k8s-deployment.yaml
+                '''
             }
         }
     }
