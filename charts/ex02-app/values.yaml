@@ -1,0 +1,9 @@
+pod:
+  name: ex02-app
+
+image:
+  repository: gwc11/ex02-app
+  tag: latest
+
+containerPort: 8081
+
